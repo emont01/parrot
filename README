@@ -1,0 +1,14 @@
+Parrot bot is a program that runs from the command line. It automatically follows people who follow its account. If you send a direct message to the parrot bot account, it will re-tweet them automatically.
+
+Requirements:
+
+Runs from the command line
+Automatically follows people who follow this account
+Automatically re-tweet direct messages
+Read Twitter account credentials from a configuration file
+
+Usage: parrot [options]
+   -p, --parrot                     Re-tweet direct messages
+   -f, --follow                     Automatically follow users who are following me
+   -v, --version                    Show version
+   -h, --help                       Show this message
