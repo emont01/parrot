@@ -1,7 +1,7 @@
 require "twitter"
 
- Twitter.user_timeline("parrot_project",:page => 1).each do | h | 
-	puts h.text
+ Twitter.user_timeline("parrot_project",:page => 1).each do | h |
+	#puts h.text
 end
 
 Twitter.configure do |config|
@@ -12,4 +12,5 @@ Twitter.configure do |config|
 end
 
 
-puts Twitter.direct_messages
+#puts Twitter.direct_messages
+
