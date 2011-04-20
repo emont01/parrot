@@ -2,7 +2,7 @@
 require "test/unit"
 require "rubygems"
 require "twitter"
-require "parrot"
+require "parrot_module"
 
 puts "####################  #{__FILE__}  ####################"
 class TestParrot < Test::Unit::TestCase
@@ -37,5 +37,19 @@ class TestParrot < Test::Unit::TestCase
         end
     end
 
+    def test_help
+        parrot_bot = Parrot::Parrot.new
+        expected = "Usage: parrot [options] \n"+
+        "-p, --parrot  Re-tweet direct messages \n"+
+        "-f, --follow Automatically follow users who are following me \n"+
+        "-v, --version show version \n"+
+        "-h, --help show this message \n"
+        assert_equal expected, parrot_bot.help
+    end
+
+    def test_version
+	    parrot_bot = Parrot::Parrot.new
+	    assert_equal 'parrot 1.0', parrot_bot.version
+    end
 end
 
