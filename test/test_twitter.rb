@@ -20,9 +20,10 @@ Twitter.direct_messages(:page=>1).each do |dm|
 end
 num = 0
 
- Twitter.follower_ids(:cursor => -1).each do | al | 
+ Twitter.follower_ids(:cursor => -1).each do | al |
 	@a = al
-	puts @a[0]	
+	puts @a[0]
 	puts @a[1]
 	num += 1
 end
+

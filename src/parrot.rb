@@ -53,8 +53,22 @@ module Parrot
             @twitter_client.unfollow(user_id)
         end
 
-        def __mark_unread__(message)
-            #@twitter_client.
+        def pending_messages?
+            direct_messages.size > 0
+        end
+
+        def do_tweet_direct_messages
+            new_tweets = []
+            direct_messages.each{ |message|
+                #substring starting at 0 and with 140 characters length
+                new_tweet = "#{message.sender_screen_name} says: #{message.text}"[0, 140]
+                @twitter_client.update(new_tweet)
+
+                #remove tweeted direct message
+                @twitter_client.direct_message_destroy(message.id)
+                new_tweets << new_tweet
+            }
+            new_tweets
         end
     end
 

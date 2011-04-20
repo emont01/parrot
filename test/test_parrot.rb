@@ -25,21 +25,16 @@ class TestParrot < Test::Unit::TestCase
         parrot_bot.followers.each{ |user| parrot_bot.__unfolow__(user.id) }
         assert_equal true, parrot_bot.pending_follow_back?
         parrot_bot.do_follow_back
-        assert_equal true, parrot_bot.pending_follow_back?
+        assert_equal false, parrot_bot.pending_follow_back?
     end
 
     def test_tweet_messages
         parrot_bot = Parrot::Parrot.new
-        parrot_bot.direct_messages.each{ |message|
-            puts "Message: '#{message.text}' create at: #{message.created_at} "
-            puts "message id #{message.id} | #{message.id_str} "
-            puts "recipient: #{message.recipient.name}"
-        }
-
-        parrot_bot.direct_messages.each{ |message| parrot_bot.__mark_unread__(message) }
-        assert_equal true, parrot_bot.pending_messages?
-        parrot_bot.do_tweet_direct_messages
-        assert_equal true, parrot_bot.pending_messages?
+        if parrot_bot.pending_messages?
+            assert_equal true, parrot_bot.pending_messages?
+            tweets = parrot_bot.do_tweet_direct_messages
+            assert_equal false, parrot_bot.pending_messages?
+        end
     end
 
 end
