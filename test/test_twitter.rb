@@ -11,6 +11,18 @@ Twitter.configure do |config|
   config.oauth_token_secret = "rcv5dJTwF1VKPUaChoCp8EiRq01JCJxt7KoCZeS0"
 end
 
+if Twitter.direct_messages.empty?
+	puts "hola again"
+end
 
-#puts Twitter.direct_messages
+Twitter.direct_messages(:page=>1).each do |dm|
+	puts "hola"
+end
+num = 0
 
+ Twitter.follower_ids(:cursor => -1).each do | al | 
+	@a = al
+	puts @a[0]	
+	puts @a[1]
+	num += 1
+end

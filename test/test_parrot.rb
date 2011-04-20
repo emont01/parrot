@@ -19,7 +19,7 @@ class TestParrot < Test::Unit::TestCase
         parrot_bot.home_timeline
     end
 
-    def __test_get_all_following_requests
+    def test_get_all_following_requests
         parrot_bot = Parrot::Parrot.new
         assert_equal false, parrot_bot.followers.empty?
         parrot_bot.followers.each{ |user| parrot_bot.__unfolow__(user.id) }
